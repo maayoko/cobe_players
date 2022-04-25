@@ -12,4 +12,4 @@ WORKDIR /home/node/app
 EXPOSE 3000
 
 # ENTRYPOINT [ "sh", "-c" ]
-CMD [ "yarn", "start" ]
+CMD [ "sh", "setup.sh" ]
