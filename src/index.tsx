@@ -5,6 +5,7 @@ import { createRoot } from 'react-dom/client';
 import Header from "./components/Header";
 import HomePage from "./pages/Home";
 import NewPlayerPage from "./pages/New";
+import PlayerDetailsPage from "./pages/PlayerDetails";
 
 const App = () => (
     <>
@@ -12,6 +13,7 @@ const App = () => (
         <Routes>
             <Route path="/" element={<HomePage />} />
             <Route path="/player/new" element={<NewPlayerPage />} />
+            <Route path="/player/:nickname" element={<PlayerDetailsPage />} />
         </Routes>
     </>
 );
