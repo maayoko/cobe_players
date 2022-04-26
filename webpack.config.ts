@@ -28,6 +28,9 @@ const webpackConfiguration: (env: CallbackEnv) => webpack.Configuration = (env) 
             port: 4000,
             historyApiFallback: true,
         },
+        watchOptions: {
+            poll: true
+        },
         mode: isDevelopment ? "development" : "production",
         module: {
             rules: [
