@@ -8,6 +8,7 @@ const HomePage = () => {
     const [indexPlayers, setIndexPlayer] = useState(10);
     const [sortPlayers, updateSortPlayers] = useState(false);
     const players: Player[] = usePlayers();
+    const [ searchPlayerTerm, updatePlayerTerm ] = useState("");
     
     const handleLoadMorePlayers = () => { setIndexPlayer(indexPlayers + 6); }
     const handleSortPlayers = () => { updateSortPlayers(true); }
@@ -20,9 +21,13 @@ const HomePage = () => {
         playersToDisplay = [...playersToDisplay].sort((a,b) => (a.name > b.name) ? 1 : ((b.name > a.name) ? -1 : 0))
     }
 
+    if (searchPlayerTerm.length > 0) {
+        playersToDisplay = playersToDisplay.filter(player => player.name.toLowerCase().match(searchPlayerTerm.toLowerCase()));
+    }
+
     return (
         <div>
-            <HomeHeader />
+            <HomeHeader updatePlayerTerm={updatePlayerTerm}/>
             <div>
                 <button onClick={handleSortPlayers}>Sort players alphabetically</button>
                 <button onClick={handleResetPlayers}>Reset players</button>
