@@ -45,6 +45,11 @@ const NewPlayerPage = () => {
         };
 
         console.log(player);
+
+        (nameElement.current as HTMLInputElement).value = "";
+        (photoElement.current as HTMLInputElement).value = "";
+        (nicknameElement.current as HTMLInputElement).value = "";
+        (earningsElement.current as HTMLInputElement).value = "";
     }
 
     const handlePhotoChange = () => {
