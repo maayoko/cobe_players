@@ -3,7 +3,40 @@ import { NavLink, useNavigate } from "react-router-dom";
 import styled from "styled-components";
 
 const Header = styled.header`
-    height: 4rem;
+    height: 6rem;
+    background-color: ${props => props.theme.color};
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 1rem;
+`;
+
+const StyledNavLink = styled(NavLink)`
+    color: white;
+    text-decoration: none;
+    font-size: 2rem;
+`;
+
+const CreatePlayerNavLink = styled(NavLink)`
+    color: #CFD8DC;
+    text-decoration: none;
+    font-size: 2rem;
+
+    & > span:first-of-type {
+        margin-left: 2rem;
+    }
+
+    & > span:last-of-type {
+        margin-left: 2rem;
+        color: white;
+        font-size: 2.5rem;
+    }
+`;
+
+const Input = styled.input`
+    padding: 1rem;
+    font-size: 1.3rem;
+    width: 25rem;
 `;
 
 interface HomeHeaderProps {
@@ -18,12 +51,14 @@ export const HomeHeader = ({ updatePlayerTerm }: PropsWithChildren<HomeHeaderPro
     }
     return (
         <Header>
-            <NavLink to="/">Home</NavLink>
-            <input ref={inputElement} type="text" placeholder="Search player" onChange={handleSearchPlayer} />
-            <NavLink to="/player/new">
-                <span>Create player</span>
-                <span style={{ marginLeft: 10 }}>&#43;</span>
-            </NavLink>
+            <StyledNavLink to="/">Home</StyledNavLink>
+            <div>
+                <Input ref={inputElement} type="text" placeholder="Search player" onChange={handleSearchPlayer} />
+                <CreatePlayerNavLink to="/player/new">
+                    <span>Add player</span>
+                    <span>&#43;</span>
+                </CreatePlayerNavLink>
+            </div>
         </Header>
     );
 }
@@ -32,9 +67,9 @@ export const CreatePlayerHeader = () => {
     const navigate = useNavigate();
 
     return (
-        <header>
+        <Header>
             <a href="#" onClick={() => navigate(-1)}>Back</a>
-        </header>
+        </Header>
     );
 }
 
@@ -42,20 +77,20 @@ export const PlayerDetailsHeader = () => {
     const navigate = useNavigate();
 
     return (
-        <header>
+        <Header>
             <a href="#" onClick={() => navigate(-1)}>Back</a>
             <NavLink to="/player/new">
-                <span>Create player</span>
+                <span>Add player</span>
                 <span style={{ marginLeft: 10 }}>&#43;</span>
             </NavLink>
-        </header>
+        </Header>
     ); 
 }
 
 export const PlayerErrorHeader = () => {
     return (
-        <header>
+        <Header>
             <NavLink to="/">Home</NavLink>
-        </header>
+        </Header>
     );
 }
