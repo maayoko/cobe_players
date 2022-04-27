@@ -1,5 +1,10 @@
 import React, { PropsWithChildren, useRef } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
+import styled from "styled-components";
+
+const Header = styled.header`
+    height: 4rem;
+`;
 
 interface HomeHeaderProps {
     updatePlayerTerm: React.Dispatch<React.SetStateAction<string>>;
@@ -12,14 +17,14 @@ export const HomeHeader = ({ updatePlayerTerm }: PropsWithChildren<HomeHeaderPro
         updatePlayerTerm(searchTerm);
     }
     return (
-        <header>
+        <Header>
             <NavLink to="/">Home</NavLink>
             <input ref={inputElement} type="text" placeholder="Search player" onChange={handleSearchPlayer} />
             <NavLink to="/player/new">
                 <span>Create player</span>
                 <span style={{ marginLeft: 10 }}>&#43;</span>
             </NavLink>
-        </header>
+        </Header>
     );
 }
 
