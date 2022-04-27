@@ -25,6 +25,7 @@ const NewPlayerPage = () => {
     const nicknameElement = useRef<HTMLInputElement>(null);
     const earningsElement = useRef<HTMLInputElement>(null);
     const [flags, updateFlags] = useState<Flag[]>([]);
+    const [ playerPhotoURL, displayPhoto ] = useState("");
 
     const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
@@ -48,7 +49,7 @@ const NewPlayerPage = () => {
 
     const handlePhotoChange = () => {
         const photo: string = (photoElement.current as HTMLInputElement).value;
-        console.log(photo)
+        displayPhoto(photo);
     }
 
     useEffect(() => {
@@ -76,8 +77,7 @@ const NewPlayerPage = () => {
                     <label htmlFor="photo">Photo:</label>
                     <input type="text" id="photo" ref={photoElement} onChange={handlePhotoChange} />
                     {
-                        photoElement.current && photoElement.current.value !== "" &&
-                        <img src={photoElement.current.value} alt="Player photo" />
+                        playerPhotoURL !== "" && <img src={playerPhotoURL} alt="Player photo" />
                     }
                 </div>
                 <div>
