@@ -4,7 +4,7 @@ import { PlayerDetailsHeader } from "../../components/Header";
 import { usePlayers } from "../../modules/player/usePlayers";
 import { Player } from "../New";
 
-type RouteParams = {
+export type RouteParams = {
     nickname: string;
 }
 

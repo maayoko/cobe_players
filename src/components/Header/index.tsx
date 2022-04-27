@@ -46,3 +46,11 @@ export const PlayerDetailsHeader = () => {
         </header>
     ); 
 }
+
+export const PlayerErrorHeader = () => {
+    return (
+        <header>
+            <NavLink to="/">Home</NavLink>
+        </header>
+    );
+}
