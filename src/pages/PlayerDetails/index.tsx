@@ -1,5 +1,6 @@
 import React from "react";
 import { useParams } from "react-router-dom";
+import { PlayerDetailsHeader } from "../../components/Header";
 import { usePlayers } from "../../modules/player/usePlayers";
 import { Player } from "../New";
 
@@ -22,13 +23,16 @@ const PlayerDetailsPage = () => {
 
     return (
         <div>
-            <p>{player.name}</p>
-            <p>
-                <img src={player.photoURL} alt="Player Photo" />
-            </p>
-            <p>Country: {player.country}</p>
-            <p>Nickname: {player.nickname}</p>
-            <p>Earnings: {player.earnings} EUR</p>
+            <PlayerDetailsHeader />
+            <div>
+                <p>{player.name}</p>
+                <p>
+                    <img src={player.photoURL} alt="Player Photo" />
+                </p>
+                <p>Country: {player.country}</p>
+                <p>Nickname: {player.nickname}</p>
+                <p>Earnings: {player.earnings} EUR</p>
+            </div>
         </div>
     );
 }

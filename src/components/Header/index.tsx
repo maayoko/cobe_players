@@ -1,7 +1,7 @@
 import React from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 
-const Header = () => {
+export const HomeHeader = () => {
     return (
         <header>
             <NavLink to="/">Home</NavLink>
@@ -14,4 +14,26 @@ const Header = () => {
     );
 }
 
-export default Header;
+export const CreatePlayerHeader = () => {
+    const navigate = useNavigate();
+
+    return (
+        <header>
+            <a href="#" onClick={() => navigate(-1)}>Back</a>
+        </header>
+    );
+}
+
+export const PlayerDetailsHeader = () => {
+    const navigate = useNavigate();
+
+    return (
+        <header>
+            <a href="#" onClick={() => navigate(-1)}>Back</a>
+            <NavLink to="/player/new">
+                <span>Create player</span>
+                <span style={{ marginLeft: 10 }}>&#43;</span>
+            </NavLink>
+        </header>
+    ); 
+}

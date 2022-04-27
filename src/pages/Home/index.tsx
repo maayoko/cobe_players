@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { NavLink } from "react-router-dom";
+import { HomeHeader } from "../../components/Header";
 import { usePlayers } from "../../modules/player/usePlayers";
 import { Player } from "../New";
 
@@ -21,6 +22,7 @@ const HomePage = () => {
 
     return (
         <div>
+            <HomeHeader />
             <div>
                 <button onClick={handleSortPlayers}>Sort players alphabetically</button>
                 <button onClick={handleResetPlayers}>Reset players</button>

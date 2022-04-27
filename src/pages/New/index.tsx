@@ -1,4 +1,5 @@
 import React, { useRef, useEffect, useState } from "react";
+import { CreatePlayerHeader } from "../../components/Header";
 
 export interface Flag {
     name: string;
@@ -58,37 +59,40 @@ const NewPlayerPage = () => {
 
 
     return (
-        <form onSubmit={handleSubmit}>
-            <div>
-                <label htmlFor="name">Name:</label>
-                <input type="text" id="name" ref={nameElement} />
-            </div>
-            <div>
-                <label htmlFor="country">Country:</label>
-                <select id="country" ref={countryElement}>
-                    {flags.map(flag => <option key={flag.code} value={flag.name}>{flag.name} {flag.emoji}</option>)}
-                </select>
-            </div>
-            <div>
-                <label htmlFor="photo">Photo:</label>
-                <input type="text" id="photo" ref={photoElement} onChange={handlePhotoChange} />
-                {
-                    photoElement.current && photoElement.current.value !== "" &&
-                    <img src={photoElement.current.value} alt="Player photo" />
-                }
-            </div>
-            <div>
-                <label htmlFor="nickname">Nickname:</label>
-                <input type="text" id="nickname" ref={nicknameElement} />
-            </div>
-            <div>
-                <label htmlFor="earnings">Earnings:</label>
-                <input type="number" id="earnings" ref={earningsElement} />
-            </div>
-            <div>
-                <input type="submit" value="Create" />
-            </div>
-        </form>
+        <div>
+            <CreatePlayerHeader />
+            <form onSubmit={handleSubmit}>
+                <div>
+                    <label htmlFor="name">Name:</label>
+                    <input type="text" id="name" ref={nameElement} />
+                </div>
+                <div>
+                    <label htmlFor="country">Country:</label>
+                    <select id="country" ref={countryElement}>
+                        {flags.map(flag => <option key={flag.code} value={flag.name}>{flag.name} {flag.emoji}</option>)}
+                    </select>
+                </div>
+                <div>
+                    <label htmlFor="photo">Photo:</label>
+                    <input type="text" id="photo" ref={photoElement} onChange={handlePhotoChange} />
+                    {
+                        photoElement.current && photoElement.current.value !== "" &&
+                        <img src={photoElement.current.value} alt="Player photo" />
+                    }
+                </div>
+                <div>
+                    <label htmlFor="nickname">Nickname:</label>
+                    <input type="text" id="nickname" ref={nicknameElement} />
+                </div>
+                <div>
+                    <label htmlFor="earnings">Earnings:</label>
+                    <input type="number" id="earnings" ref={earningsElement} />
+                </div>
+                <div>
+                    <input type="submit" value="Create" />
+                </div>
+            </form>
+        </div>
     );
 }
 
