@@ -5,15 +5,16 @@ import { ThemeProvider } from "styled-components";
 import { Normalize } from "styled-normalize";
 
 import App from "./App";
-import theme from "./theme";
+import theme, { GlobalStyles } from "./theme";
 
 const container = document.getElementById('root');
 if (container) {
     const root = createRoot(container);
     root.render(
         <BrowserRouter>
-            <Normalize />
             <ThemeProvider theme={theme}>
+                <Normalize />
+                <GlobalStyles />
                 <App />
             </ThemeProvider>
         </BrowserRouter>
