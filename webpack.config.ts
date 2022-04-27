@@ -32,6 +32,7 @@ const webpackConfiguration: (env: CallbackEnv) => webpack.Configuration = (env) 
             poll: true
         },
         mode: isDevelopment ? "development" : "production",
+        devtool: isDevelopment ? "eval-cheap-source-map" : "source-map",
         module: {
             rules: [
                 {
