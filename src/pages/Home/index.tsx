@@ -1,8 +1,36 @@
 import React, { useState } from "react";
 import { NavLink } from "react-router-dom";
+import styled, {  } from "styled-components";
+import { darken } from "polished";
+
 import { HomeHeader } from "../../components/Header";
 import { usePlayers } from "../../modules/player/usePlayers";
 import { Player } from "../New";
+
+const Button = styled.button`
+    border: none;
+    background-color: ${({theme}) => theme.color};
+    border-radius: 4px;
+    padding: 1rem 2rem;
+    color: white;
+    font-size: 1.4rem;
+    cursor: pointer;
+
+    &:hover {
+        background-color: ${({theme}) => darken(0.2, theme.color)};
+    }
+`;
+
+const ButtonContainer = styled.div`
+    text-align: center;
+    padding: 2rem 0;
+`;
+
+const ButtonsContainer = styled(ButtonContainer)`
+    & > ${Button}:first-of-type {
+        margin-right: 2rem;
+    }
+`;
 
 const HomePage = () => {
     const [indexPlayers, setIndexPlayer] = useState(10);
@@ -28,10 +56,10 @@ const HomePage = () => {
     return (
         <div>
             <HomeHeader updatePlayerTerm={updatePlayerTerm}/>
-            <div>
-                <button onClick={handleSortPlayers}>Sort players alphabetically</button>
-                <button onClick={handleResetPlayers}>Reset players</button>
-            </div>
+            <ButtonsContainer>
+                <Button onClick={handleSortPlayers}>Sort players alphabetically</Button>
+                <Button onClick={handleResetPlayers}>Reset players</Button>
+            </ButtonsContainer>
             <div style={{ display: "flex", flexWrap: "wrap" }}>
                 {playersToDisplay.map((player, idx) => (
                     <NavLink to={`/player/${player.nickname}`} key={idx} style={{ flexBasis: "33.33333%" }}>
@@ -43,9 +71,9 @@ const HomePage = () => {
                     </NavLink>
                 ))}
             </div>
-            <div style={{ textAlign: "center" }}>
-                <button onClick={handleLoadMorePlayers}>Load more</button>
-            </div>
+            <ButtonContainer>
+                <Button onClick={handleLoadMorePlayers}>Load more</Button>
+            </ButtonContainer>
         </div>
     );
 }
