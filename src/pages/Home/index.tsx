@@ -44,6 +44,7 @@ const HomePage = () => {
 
     const initialPlayersToDisplay: Player[] = players.slice(0, indexPlayers);
     let playersToDisplay: Player[] = [...initialPlayersToDisplay];
+    const displayLoadMoreButton: boolean = indexPlayers < players.length;
     
     if (sortPlayers) {
         playersToDisplay = [...playersToDisplay].sort((a,b) => (a.name > b.name) ? 1 : ((b.name > a.name) ? -1 : 0))
@@ -70,10 +71,12 @@ const HomePage = () => {
                         <p>Country: {player.country}</p>
                     </NavLink>
                 ))}
-            </div>
+            {
+                displayLoadMoreButton &&
             <ButtonContainer>
                 <Button onClick={handleLoadMorePlayers}>Load more</Button>
             </ButtonContainer>
+            }
         </div>
     );
 }
