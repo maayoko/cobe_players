@@ -17,6 +17,12 @@ const StyledNavLink = styled(NavLink)`
     font-size: 2rem;
 `;
 
+const Link = styled.a`
+    color: white;
+    text-decoration: none;
+    font-size: 2rem;
+`;
+
 const CreatePlayerNavLink = styled(NavLink)`
     color: #CFD8DC;
     text-decoration: none;
@@ -37,6 +43,10 @@ const Input = styled.input`
     padding: 1rem;
     font-size: 1.3rem;
     width: 25rem;
+
+    &:focus {
+        outline: none;
+    }
 `;
 
 interface HomeHeaderProps {
@@ -68,7 +78,7 @@ export const CreatePlayerHeader = () => {
 
     return (
         <Header>
-            <a href="#" onClick={() => navigate(-1)}>Back</a>
+            <Link href="#" onClick={() => navigate(-1)}>Back</Link>
         </Header>
     );
 }
@@ -78,11 +88,11 @@ export const PlayerDetailsHeader = () => {
 
     return (
         <Header>
-            <a href="#" onClick={() => navigate(-1)}>Back</a>
-            <NavLink to="/player/new">
+            <Link href="#" onClick={() => navigate(-1)}>Back</Link>
+            <CreatePlayerNavLink to="/player/new">
                 <span>Add player</span>
-                <span style={{ marginLeft: 10 }}>&#43;</span>
-            </NavLink>
+                <span>&#43;</span>
+            </CreatePlayerNavLink>
         </Header>
     ); 
 }
@@ -90,7 +100,7 @@ export const PlayerDetailsHeader = () => {
 export const PlayerErrorHeader = () => {
     return (
         <Header>
-            <NavLink to="/">Home</NavLink>
+            <StyledNavLink to="/">Home</StyledNavLink>
         </Header>
     );
 }
