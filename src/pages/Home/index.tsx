@@ -32,6 +32,12 @@ const ButtonsContainer = styled(ButtonContainer)`
     }
 `;
 
+const PlayersContainer = styled.div`
+    display: flex;
+    flex-wrap: wrap;
+    padding: 0 4rem;
+`;
+
 const HomePage = () => {
     const [indexPlayers, setIndexPlayer] = useState(10);
     const [sortPlayers, updateSortPlayers] = useState(false);
@@ -61,21 +67,27 @@ const HomePage = () => {
                 <Button onClick={handleSortPlayers}>Sort players alphabetically</Button>
                 <Button onClick={handleResetPlayers}>Reset players</Button>
             </ButtonsContainer>
-            <div style={{ display: "flex", flexWrap: "wrap" }}>
+            <PlayersContainer>
                 {playersToDisplay.map((player, idx) => (
-                    <NavLink to={`/player/${player.nickname}`} key={idx} style={{ flexBasis: "33.33333%" }}>
-                        <p>
+                    <NavLink to={`/player/${player.nickname}`} key={idx} style={{ flexBasis: "33.33333%", width: "33.333333%" }}>
+                        <div>
                             <img src={player.photoURL} alt="Player Photo" />
-                        </p>
-                        <p>{player.name}</p>
-                        <p>Country: {player.country}</p>
+                            <div>
+                                <div></div>
+                                <div>
+                                    <p>{player.name}</p>
+                                    <p>Country: {player.country}</p>
+                                </div>
+                            </div>
+                        </div>
                     </NavLink>
                 ))}
+            </PlayersContainer>
             {
                 displayLoadMoreButton &&
-            <ButtonContainer>
-                <Button onClick={handleLoadMorePlayers}>Load more</Button>
-            </ButtonContainer>
+                <ButtonContainer>
+                    <Button onClick={handleLoadMorePlayers}>Load more</Button>
+                </ButtonContainer>
             }
         </div>
     );
