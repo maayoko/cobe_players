@@ -28,9 +28,6 @@ const webpackConfiguration: (env: CallbackEnv) => webpack.Configuration = (env) 
             port: 4000,
             historyApiFallback: true,
         },
-        watchOptions: {
-            poll: true
-        },
         mode: isDevelopment ? "development" : "production",
         devtool: isDevelopment ? "eval-cheap-source-map" : "source-map",
         module: {
