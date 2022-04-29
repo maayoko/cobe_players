@@ -17,6 +17,8 @@
         "@babel/preset-react": "^7.16.7",
         "@babel/preset-typescript": "^7.16.7",
         "@babel/runtime": "^7.17.9",
+        "@testing-library/react": "^13.1.1",
+        "@testing-library/react-hooks": "^8.0.0",
         "@types/fork-ts-checker-webpack-plugin": "^0.4.5",
         "@types/jest": "^27.4.1",
         "@types/react": "^18.0.6",
