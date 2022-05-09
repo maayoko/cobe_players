@@ -1,8 +1,9 @@
 import React from "react";
 import { useParams } from "react-router-dom";
-import { PlayerDetailsHeader } from "../../components/Header";
-import { usePlayers } from "../../modules/player/usePlayers";
-import { Player } from "../New";
+
+import { PlayerDetailsHeader } from "@/components/Header";
+import { usePlayers } from "@/modules/player/usePlayers";
+import { Player } from "@/pages/New";
 
 export type RouteParams = {
     nickname: string;
@@ -11,7 +12,7 @@ export type RouteParams = {
 const PlayerDetailsPage = () => {
     const params = useParams<RouteParams>();
     const players: Player[] = usePlayers();
-    const player: Player | undefined = players.find(p => p.nickname === params.nickname); 
+    const player: Player | undefined = players.find(p => p.nickname === params.nickname);
 
     if (!player) {
         return (

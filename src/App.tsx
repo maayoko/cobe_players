@@ -1,11 +1,11 @@
 import React from "react";
 import { Routes, Route } from "react-router-dom";
-import DendiRoute from "./components/DendiRoute";
 
-import HomePage from "./pages/Home";
-import NewPlayerPage from "./pages/New";
-import PlayerDetailsPage from "./pages/PlayerDetails";
-import PlayerErrorPage from "./pages/PlayerErrorPage";
+import DendiRoute from "@/components/DendiRoute";
+import HomePage from "@/pages/Home";
+import NewPlayerPage from "@/pages/New";
+import PlayerDetailsPage from "@/pages/PlayerDetails";
+import PlayerErrorPage from "@/pages/PlayerErrorPage";
 
 const App = () => {
     return (

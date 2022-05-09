@@ -1,5 +1,6 @@
 import React, { useRef, useEffect, useState } from "react";
-import { CreatePlayerHeader } from "../../components/Header";
+
+import { CreatePlayerHeader } from "@/components/Header";
 
 export interface Flag {
     name: string;
@@ -25,7 +26,7 @@ const NewPlayerPage = () => {
     const nicknameElement = useRef<HTMLInputElement>(null);
     const earningsElement = useRef<HTMLInputElement>(null);
     const [flags, updateFlags] = useState<Flag[]>([]);
-    const [ playerPhotoURL, displayPhoto ] = useState("");
+    const [playerPhotoURL, displayPhoto] = useState("");
 
     const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();

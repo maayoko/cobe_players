@@ -3,6 +3,7 @@ import "webpack-dev-server";
 import * as webpack from "webpack";
 import ForkTsCheckerWebpackPlugin from 'fork-ts-checker-webpack-plugin';
 import path from "path";
+import TsconfigPathsPlugin from "tsconfig-paths-webpack-plugin";
 
 interface CallbackEnv {
     WEBPACK_SERVE: boolean;
@@ -20,6 +21,7 @@ const webpackConfiguration: (env: CallbackEnv) => webpack.Configuration = (env) 
             filename: "bundle.js",
         },
         resolve: {
+            plugins: [new TsconfigPathsPlugin()],
             extensions: [".tsx", ".ts", ".js"],
         },
         devServer: {

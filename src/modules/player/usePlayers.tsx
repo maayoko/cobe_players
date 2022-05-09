@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Player } from "../../pages/New";
+import { Player } from "@/pages/New";
 
 export const usePlayers = () => {
     const [players, setPlayers] = useState<Player[]>([]);

@@ -1,5 +1,6 @@
 import React from "react";
-import { PlayerErrorHeader } from "../../components/Header";
+
+import { PlayerErrorHeader } from "@/components/Header";
 
 const PlayerErrorPage = () => {
     return (

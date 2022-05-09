@@ -1,11 +1,11 @@
 import React, { useState } from "react";
 import { NavLink } from "react-router-dom";
-import styled, { } from "styled-components";
+import styled from "styled-components";
 import { darken } from "polished";
 
-import { HomeHeader } from "../../components/Header";
-import { usePlayers } from "../../modules/player/usePlayers";
-import { Player } from "../New";
+import { HomeHeader } from "@/components/Header";
+import { usePlayers } from "@/modules/player/usePlayers";
+import { Player } from "@/pages/New";
 
 const Button = styled.button`
     border: none;
