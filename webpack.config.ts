@@ -4,6 +4,7 @@ import * as webpack from "webpack";
 import ForkTsCheckerWebpackPlugin from 'fork-ts-checker-webpack-plugin';
 import path from "path";
 import TsconfigPathsPlugin from "tsconfig-paths-webpack-plugin";
+import HtmlWebpackPlugin from "html-webpack-plugin";
 
 interface CallbackEnv {
     WEBPACK_SERVE: boolean;
@@ -11,8 +12,28 @@ interface CallbackEnv {
     WEBPACK_BUILD: boolean
 }
 
+const commonPlugins: webpack.WebpackPluginInstance[] = [
+    new ForkTsCheckerWebpackPlugin({
+        async: false,
+        eslint: {
+            files: "./src/**/*",
+        },
+    }),
+];
+
+const productionPlugins: webpack.WebpackPluginInstance[] = [
+    new HtmlWebpackPlugin({
+        title: "Cobe players",
+        publicPath: "/"
+    }),
+];
+
 const webpackConfiguration: (env: CallbackEnv) => webpack.Configuration = (env) => {
     const isDevelopment = !!env.WEBPACK_SERVE;
+    const plugins: webpack.WebpackPluginInstance[] = [
+        ...commonPlugins,
+        ...(!isDevelopment ? productionPlugins : [])
+    ];
 
     return {
         entry: path.join(__dirname, "src/index.tsx"),
@@ -50,14 +71,7 @@ const webpackConfiguration: (env: CallbackEnv) => webpack.Configuration = (env) 
                 },
             ],
         },
-        plugins: [
-            new ForkTsCheckerWebpackPlugin({
-                async: false,
-                eslint: {
-                    files: "./src/**/*",
-                },
-            }),
-        ],
+        plugins,
     };
 }
 
